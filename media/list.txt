@@ -1,6 +1,4 @@
 id	title	price_pc	link	image_link	category_name1	shipping
-2	상품2	2000	http://222	http://222.png	수산	222
-3	상품3	3000	http://333	http://333.png	수산	333
-4	상품4	4000	http://444	http://444.png	농산	444
-5	상품5	5000	http://555	http://555.png	농산	555
-1	상품11	1000	http://111	http://111.png	수산	111
+1	11	10	http://1	http://1.png	111	11
+2	22	20	http://2	http://2.png	222	22
+3	33	30	http://3	http://3.png	333	33

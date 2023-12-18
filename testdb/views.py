@@ -4,8 +4,7 @@ import mimetypes
 import os
 
 from django.conf import settings
-from django.http.response import HttpResponse
-from .models import Document
+from django.http.response import HttpResponse 
 from django.http import FileResponse
 from django.core.files.storage import FileSystemStorage
 
@@ -31,7 +30,7 @@ def update_list_file(request):
     f.write("id\ttitle\tprice_pc\tlink\timage_link\tcategory_name1\tshipping\n")
 
     for result in results:
-        f.write(result.__str__())
+        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}".format(result.id, result.title, result.price, result.link, result.img_link, result.category_name1, result.shipping))
         f.write('\n')
 
     f.close()

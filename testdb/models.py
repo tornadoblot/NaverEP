@@ -7,27 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-class Product(models.Model):
-    id = models.IntegerField(primary_key=True)
-    title = models.TextField(blank=True, null=True)  # This field type is a guess.
-    price = models.IntegerField(blank=True, null=True)
-    shipping = models.IntegerField(blank=True, null=True)
-    link = models.TextField(blank=True, null=True)
-    img_link = models.TextField(blank=True, null=True)
-    category_name1 = models.TextField(blank=True, null=True)
 
-    def __str__(self):
-        return str("{}\t{}\t{}\t{}\t{}\t{}\t{}".format(self.id, self.title, self.price, self.link, self.img_link, self.category_name1, self.shipping))
-
-    class Meta:
-        managed = False
-        db_table = 'Product'
-        
-class Document(models.Model):
-    title = models.CharField(max_length=200, null = True, default ='')
-    uploadedFile = models.FileField(upload_to="result/", null=True, default = '')
-    dateTimeofUpload = models.DateTimeField(auto_now=True)
-        
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
@@ -140,3 +120,32 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
+
+
+class Product(models.Model):
+    id = models.IntegerField(primary_key=True)
+    price = models.IntegerField(blank=True, null=True)
+    shipping = models.IntegerField(blank=True, null=True)
+    title = models.CharField(max_length=20, blank=True, null=True)
+    link = models.CharField(max_length=200, blank=True, null=True)
+    img_link = models.CharField(max_length=200, blank=True, null=True)
+    category_name1 = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return str("{}\t{}\t{}\t{}\t{}\t{}\t{}".format(self.id, self.title, self.price, self.link, self.img_link, self.category_name1, self.shipping))
+
+
+    class Meta:
+        managed = False
+        db_table = 'product'
+
+
+class TestdbDocument(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    datetimeofupload = models.DateTimeField(db_column='dateTimeofUpload')  # Field name made lowercase.
+    title = models.CharField(max_length=200, blank=True, null=True)
+    uploadedfile = models.CharField(db_column='uploadedFile', max_length=100, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'testdb_document'
